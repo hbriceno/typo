@@ -3,10 +3,15 @@ config/mail.yml
 *~
 db/*.sqlite*
 db/schema.rb
+db/db_test
+db/db_development
 .*.swp
 .*.swo
 .DS_Store
 .rspec
+doc.rdoc
+doc/*.svg
+Makefiles/Typo/Typo.xcodeproj/project.xcworkspace
 installer/rails_installer.yml
 #/public/files
 #/public/images/theme
