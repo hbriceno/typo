@@ -57,3 +57,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara'
 end
+
+# Used to get UML class diagrams
+#gem 'railroady'

@@ -14,6 +14,7 @@
 		7C7BCC051660D45700B95AD6 /* features */ = {isa = PBXFileReference; lastKnownFileType = folder; name = features; path = ../../features; sourceTree = "<group>"; };
 		7C7BCC061660D45700B95AD6 /* spec */ = {isa = PBXFileReference; lastKnownFileType = folder; name = spec; path = ../../spec; sourceTree = "<group>"; };
 		7C7BCC071660D93300B95AD6 /* merge_article.feature */ = {isa = PBXFileReference; lastKnownFileType = text; name = merge_article.feature; path = ../../features/merge_article.feature; sourceTree = "<group>"; };
+		7C7BCC081662898800B95AD6 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = config; path = ../../config; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -21,6 +22,7 @@
 			isa = PBXGroup;
 			children = (
 				7C7BCC071660D93300B95AD6 /* merge_article.feature */,
+				7C7BCC081662898800B95AD6 /* config */,
 				7C7BCC011660D45700B95AD6 /* app */,
 				7C7BCC021660D45700B95AD6 /* config */,
 				7C7BCC031660D45700B95AD6 /* doc */,
