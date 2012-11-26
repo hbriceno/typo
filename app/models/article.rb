@@ -279,9 +279,10 @@ class Article < Content
           lCommentCopy = pComment.clone
           self.comments << lCommentCopy
        end
-      
+      debugger
       self.body += "\n\n" + other_art.body
-      
+      self.save
+      other_art.destroy
   end
 
   # Count articles on a certain date

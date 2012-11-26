@@ -33,8 +33,10 @@ class Admin::ContentController < Admin::BaseController
           @article = Article.find(params[:id])
             if (params[:merge_with] == nil || (/^\d+$/ =~ params[:merge_with]) == nil)
                 flash[:error] = _("Missing Merge Article ID or not a number: \"#{params[:merge_with]}\"")
+            elsif ((@article.access_by? current_user) == false) ||  @current_user == nil || @current_user.admin? == false
+                flash[:error] = _("Error, you are not allowed to perform this action")
             else
-                @article.merge_with(params[:merge_with])
+                @article.merge_with(params[:merge_with])                
                 flash[:notice] = _("Merge successul")
             end
 
