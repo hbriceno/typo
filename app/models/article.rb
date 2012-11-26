@@ -264,6 +264,26 @@ class Article < Content
                     :order => 'published_at desc')
   end
 
+
+# MERGE FUNCTIONALITY
+  def merge_with(other_id)
+      # verify other article exists
+      
+      raise "Article is the same" if self.id == other_id
+
+      other_art = Article.find_by_id(other_id)
+      raise "Article #{other_id} does not exist" if other_art.nil?
+
+      # clone other_art comments so if the other art is deleted we don't lose them.
+      other_art.comments.each do |pComment|
+          lCommentCopy = pComment.clone
+          self.comments << lCommentCopy
+       end
+      
+      self.body += "\n\n" + other_art.body
+      
+  end
+
   # Count articles on a certain date
   def self.count_by_date(year, month = nil, day = nil, limit = nil)
     if !year.blank?

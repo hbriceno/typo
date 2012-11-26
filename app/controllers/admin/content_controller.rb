@@ -27,6 +27,34 @@ class Admin::ContentController < Admin::BaseController
     new_or_edit
   end
 
+    # HBXX
+    def merge
+        begin
+          @article = Article.find(params[:id])
+            if (params[:merge_with] == nil || (/^\d+$/ =~ params[:merge_with]) == nil)
+                flash[:error] = _("Missing Merge Article ID or not a number: \"#{params[:merge_with]}\"")
+            else
+                @article.merge_with(params[:merge_with])
+                flash[:notice] = _("Merge successul")
+            end
+
+        rescue ActiveRecord::RecordNotFound => e
+            flash[:error] = _("Article ID #{params[:id]} not found")
+        rescue Object => e
+            flash[:error] = e.to_s
+        rescue e
+            flash[:error] = _("bad")
+        end
+        
+        unless @article.access_by? current_user
+            flash[:error] = _("Error, you are not allowed to perform this action")
+        end
+
+    
+        redirect_to :action => 'index'
+        return
+    end
+    
   def edit
     @article = Article.find(params[:id])
     unless @article.access_by? current_user
@@ -146,7 +174,7 @@ class Admin::ContentController < Admin::BaseController
     @article.text_filter = current_user.text_filter if current_user.simple_editor?
 
     @post_types = PostType.find(:all)
-    if request.post?
+      if request.post? #&& params[:article]
       if params[:article][:draft]
         get_fresh_or_existing_draft_for_article
       else
@@ -162,7 +190,7 @@ class Admin::ContentController < Admin::BaseController
         
     @article.published_at = DateTime.strptime(params[:article][:published_at], "%B %e, %Y %I:%M %p GMT%z").utc rescue Time.parse(params[:article][:published_at]).utc rescue nil
 
-    if request.post?
+    if request.post? #&& params[:article]
       set_article_author
       save_attachments
       

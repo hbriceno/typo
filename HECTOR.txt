@@ -1,0 +1,16 @@
+http://railroady.prestonlee.com
+
+rake db:migrate
+rake db:seed
+rake spec
+rake cucumber
+
+
+time rake spec SPEC=spec/models/article_merge_spec.rb SPEC_OPTS="-f d -d"
+
+sudo port install graphviz
+sudo gem install railroady
+cd my_rails_3_project
+Add "railroady" in Gemfile.
+rake diagram:all
+open doc/*.svg

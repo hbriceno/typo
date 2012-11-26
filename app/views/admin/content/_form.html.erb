@@ -148,23 +148,8 @@
     </ul>
   </div>    
 
-<% if @current_user.admin? %>
-
-
-<h4><%= _("Merge Articles") %></h4>
-
-<%= form_tag :action=>"merge", :id => @article.id do %>
-<label for="merge_id"><%= _("Article ID")%></label>
-<div class='input'>
-<%= text_field :merge_id, :name, :class => 'large', :id => "merge_with" %>
-</div>
-
-<%=  save(_("Merge")) %>
-<% end %>
-
-<% end %>
-
 
   </div>
 </div>
+
 
