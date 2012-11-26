@@ -26,7 +26,6 @@ describe "ArticleWithMerge" do
         b.destroy
     end
 =begin
-
     describe "test merge_with: A.merge_with(B.id): comments" do
 
         
